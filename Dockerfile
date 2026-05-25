@@ -1,13 +1,28 @@
-FROM node:20-bookworm-slim AS base
+FROM node:22-slim AS base
+
 WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+
+    python3 \
+
+    make \
+
+    g++ \
+
+    pkg-config \
+
+    && rm -rf /var/lib/apt/lists/*
+
+
 ENV NEXT_TELEMETRY_DISABLED=1
 
-FROM base AS deps
 COPY package.json package-lock.json ./
+
 RUN npm ci
 
 FROM base AS builder
-COPY --from=deps /app/node_modules ./node_modules
+COPY --from=base /app/node_modules ./node_modules
 COPY . .
 RUN npm run db:generate
 RUN npm run build
