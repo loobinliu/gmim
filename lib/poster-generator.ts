@@ -58,7 +58,7 @@ function posterSvg({ quote, backgroundId, width, height }: Required<GeneratePost
   const contentX = cardX + 72;
 
   return `
-<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
+<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" font-family="Noto Sans CJK SC, Noto Sans CJK, PingFang SC, Microsoft YaHei, sans-serif">
   <defs>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000000" flood-opacity="0.14"/>
